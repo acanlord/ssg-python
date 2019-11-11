@@ -31,5 +31,14 @@ def gen_html():
         finished_index_page = template.replace("{{content}}", index_content)
         open(p["output"], "w+").write(finished_index_page)
 
+    return True
 
-gen_html()
+
+def main():
+    if gen_html():
+        print('Done generating HTML files at docs/')
+    else:
+        print('oh snap, something went wrong')
+
+if __name__ == "__main__":
+    main()

@@ -1,14 +1,6 @@
 #! /usr/bin/python
 
-import os
-
 # Generate HTML content 
-
-
-
-
-
-
 
 def get_file_contents(template):
     """ get_file_contents takes in path to file & returns contents of file as stirng """
