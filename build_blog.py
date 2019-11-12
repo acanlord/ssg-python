@@ -66,16 +66,16 @@ def gen_blog():
         # Use the string replace
         blog_template = blog_template.replace("{{title}}", b["title"])
         finished_blog_page = blog_template.replace("{{blog}}", blog_content)
-        open(b["output"], "w+").write(finished_index_page)
+        open(b["output"], "w+").write(finished_blog_page)
 
     return True
 
 
 def main():
     if gen_html():
-        print('Done generating HTML files at docs/')
+        print('Done generating HTML files in docs')
     elif gen_blog():
-        print('Done generating HTML files at docs/')
+        print('Done generating Blog files in docs')
     else:
         print('oh snap, something went wrong')
 
