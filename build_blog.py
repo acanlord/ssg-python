@@ -65,7 +65,7 @@ def gen_blog():
         blog_content = open(b["filename"]).read()
         # Use the string replace
         blog_template = blog_template.replace("{{title}}", b["title"])
-        finished_blog_page = blog_template.replace("{{content}}", blog_content)
+        finished_blog_page = blog_template.replace("{{blog}}", blog_content)
         open(b["output"], "w+").write(finished_index_page)
 
     return True
