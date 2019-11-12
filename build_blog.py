@@ -54,6 +54,8 @@ def gen_html():
         finished_index_page = template.replace("{{content}}", index_content)
         open(p["output"], "w+").write(finished_index_page)
 
+
+def gen_blog():
     for b in blog:
         blog_base = "./templates/blog.html"
         # Read in the entire template
@@ -70,6 +72,8 @@ def gen_html():
 
 def main():
     if gen_html():
+        print('Done generating HTML files at docs/')
+    elif gen_blog():
         print('Done generating HTML files at docs/')
     else:
         print('oh snap, something went wrong')
