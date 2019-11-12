@@ -22,21 +22,25 @@ blog =  [
         "filename":"./content/blog1.html",
         "date": "October 25th, 2019",
         "title": "Kickstart Coding",
+        "output": "docs/blog1.html",
         },
         {
         "filename":"./content/blog2.html",
         "date": "October 30th, 2019",
         "title": "Learning HTML",
+        "output": "docs/blog2.html",
         },
         {
         "filename":"./content/blog3.html",
         "date": "November 8th, 2019",
         "title": "Learning CSS",
+        "output": "docs/blog3.html",
         },
         {
         "filename":"./content/blog4.html",
         "date": "November 11th, 2019",
         "title": "Learning Python",
+        "output": "docs/blog4.html",
         }
         ]
 
