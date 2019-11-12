@@ -19,22 +19,22 @@ pages = [
 
 blog =  [
         {
-        "filename":"blog1.html",
+        "filename":"./content/blog1.html",
         "date": "October 25th, 2019",
         "title": "Kickstart Coding",
         },
         {
-        "filename":"blog2.html",
+        "filename":"./content/blog2.html",
         "date": "October 30th, 2019",
         "title": "Learning HTML",
         },
         {
-        "filename":"blog3.html",
+        "filename":"./content/blog3.html",
         "date": "November 8th, 2019",
         "title": "Learning CSS",
         },
         {
-        "filename":"blog4.html",
+        "filename":"./content/blog4.html",
         "date": "November 11th, 2019",
         "title": "Learning Python",
         }
