@@ -19,22 +19,22 @@ pages = [
 
 blog = [
         {
-        "filename": "blog/1.html",
+        "filename": "blog1.html",
         "date": "October 25th, 2019",
         "title": "Kickstart Coding",
         },
         {
-        "filename": "blog/2.html",
+        "filename": "blog2.html",
         "date": "October 30th, 2019",
         "title": "Learning HTML",
         },
         {
-        "filename": "blog/3.html",
+        "filename": "blog3.html",
         "date": "November 8th, 2019",
         "title": "Learning CSS",
         },
         {
-        "filename": "blog/4.html",
+        "filename": "blog4.html",
         "date": "November 11th, 2019",
         "title": "Learning Python",
         }
@@ -56,16 +56,17 @@ def gen_html():
 
 
 def gen_blog():
+
     for b in blog:
         blog_base = "./templates/blog.html"
         # Read in the entire template
-        btemplate = open(blog_base).read()
+        blog_template = open(blog_base).read()
         # Read in the content of the index HTML page
-        index_content = open(p["filename"]).read()
+        blog_content = open(b["filename"]).read()
         # Use the string replace
-        btemplate = btemplate.replace("{{title}}", p["title"])
-        finished_index_page = btemplate.replace("{{content}}", index_content)
-        open(p["output"], "w+").write(finished_index_page)
+        blog_template = blog_template.replace("{{title}}", b["title"])
+        finished_blog_page = blog_template.replace("{{content}}", blog_content)
+        open(b["output"], "w+").write(finished_index_page)
 
     return True
 
