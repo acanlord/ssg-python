@@ -1,65 +1,84 @@
-#! /usr/bin/python
+pages = [
+      {
+          "filename": "content/index.html",
+          "output": "docs/index.html",
+          "title": "About Me",
+      },
+      {
+          "filename": "content/projects.html",
+          "output": "docs/projects.html",
+          "title": "Projects",
+      },
+      {
 
-# Generate HTML content 
+          "filename": "content/blog.html",
+          "output": "docs/blog.html",
+          "title": "blog",
+      }
+      ]
+
+blog =  [
+        {
+        "filename":"blog/blog1.html",
+        "date": "October 25th, 2019",
+        "title": "Kickstart Coding",
+        "output": "docs/blog1.html",
+        },
+        {
+        "filename":"blog/blog2.html",
+        "date": "October 30th, 2019",
+        "title": "Learning HTML",
+        "output": "docs/blog2.html",
+        },
+        {
+        "filename":"blog/blog3.html",
+        "date": "November 8th, 2019",
+        "title": "Learning CSS",
+        "output": "docs/blog3.html",
+        },
+        {
+        "filename":"blog/blog4.html",
+        "date": "November 11th, 2019",
+        "title": "Learning Python",
+        "output": "docs/blog4.html",
+        }
+        ]
 
 
-pages = [ 
-    { 
-        "filename": "./content/index.html",
-        "output": "docs/index.html",
-        "title": "About Me",
-    },
-    {
-        "filename": "./content/projects.html",
-        "output": "docs/projects.html",
-        "title": "Projects",
-    },
-    {
-
-        "filename": "./content/blog.html",
-        "output": "docs/blog.html",
-        "title": "blog",
-    }
-    ]
-
-
-
-
-
-def get_template(template):
-    with open(template) as template_contents:
-        return template_contents.read()
-
-
-
-
-def gen_html(pages):
-    top = "./templates/top.html"
-    bottom = "./templates/bottom.html"
+def gen_html():
 
     for p in pages:
-        with open(p["output"], 'w') as outfile:
+        base = "./templates/base.html"
+        # Read in the entire template
+        template = open(base).read()
+        # Read in the content of the index HTML page
+        index_content = open(p["filename"]).read()
+        # Use the string replace
+        template = template.replace("{{title}}", p["title"])
+        finished_index_page = template.replace("{{content}}", index_content)
+        open(p["output"], "w+").write(finished_index_page)
 
-                # Get and dump 'top' template into 'output' file
-                top_html = get_template(top)
-                top_html = top_html.replace("{{title}}", p["title"])
-                outfile.write(top_html)
 
-                # Get and dump page.filename contents into page.output
-                with open(p["filename"]) as infile:
-                    outfile.write(infile.read())
+def gen_blog():
 
-                # Get and dump 'bottom' template into 'output' file
-                outfile.write(get_template(bottom))
-    
+    for b in blog:
+        blog_base = "./templates/blog.html"
+        # Read in the entire template
+        blog_template = open(blog_base).read()
+        # Read in the content of the index HTML page
+        blog_content = open(b["filename"]).read()
+        # Use the string replace
+        blog_template = blog_template.replace("{{title}}", b["title"])
+        finished_blog_page = blog_template.replace("{{blog}}", blog_content)
+        open(b["output"], "w+").write(finished_blog_page)
+
     return True
 
 
 def main():
-    if gen_html(pages):
-        print('Done generating HTML files at docs/')
-    else:
-        print('oh shit')
+    gen_html()
+    gen_blog()
+    print("Your files have been generated")
 
 if __name__ == "__main__":
     main()
