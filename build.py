@@ -72,7 +72,6 @@ def gen_blog():
         finished_blog_page = blog_template.replace("{{blog}}", blog_content)
         open(b["output"], "w+").write(finished_blog_page)
 
-    return True
 
 
 def main():
