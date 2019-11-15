@@ -1,5 +1,3 @@
-#! /usr/bin/python
-
 html_pages = [ 
     { 
         "filename": "./content/index.html",
@@ -48,27 +46,22 @@ blog_pages =  [
     ]
 
 
-# Helper Function
-#get_file_contents takes in path to file & returns contents of file as stirng """
 def get_file_contents(template):
-
+    """get_file_contents takes in path to file & returns contents of file as stirng """
     with open(template) as template_contents:
         return template_contents.read()
 
-def gen_html(pages_list):
-    """ Given a list of dictionary pages, iterates them and does stuff """
-
-
-    for p in pages_list:
+def gen_html(html_list):
+    for p in html_list:
         with open(p["output"], 'w') as outfile:
                 base_html = get_file_contents("templates/base.html")
                 base_html = base_html.replace("{{title}}", p["title"])
                 base_html = base_html.replace("{{content}}", get_file_contents(p["filename"]))
                 outfile.write(base_html)
 
-def gen_blog(blog_pages):
+def gen_blog(blog_list):
 
-    for b in blog_pages:
+    for b in blog_list:
         with open(b["output"], 'w') as outfile:
                 base_blog = get_file_contents("templates/blog.html")
                 base_blog = base_blog.replace("{{template}}", b["title"])
