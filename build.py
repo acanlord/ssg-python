@@ -15,7 +15,7 @@ html_pages = [
         "output": "docs/blog.html",
         "title": "blog",
     }
-]
+    ]
 
 
 blog_pages =  [
@@ -43,7 +43,7 @@ blog_pages =  [
     "title": "Learning Python",
     "output": "docs/blog4.html",
     }
-]
+    ]
 
 
 def get_file_contents(template):
