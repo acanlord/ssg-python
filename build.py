@@ -60,7 +60,6 @@ def gen_html(html_list):
                 outfile.write(base_html)
 
 def gen_blog(blog_list):
-
     for b in blog_list:
         with open(b["output"], 'w') as outfile:
                 base_blog = get_file_contents("templates/blog.html")
@@ -71,7 +70,8 @@ def gen_blog(blog_list):
 def main():
     gen_html(html_pages)
     gen_blog(blog_pages)
-print("Done generating your files")
+print(Your files have been generated")
+
 
 if __name__ == "__main__":
     main()
