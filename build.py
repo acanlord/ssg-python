@@ -43,7 +43,7 @@ blog_pages =  [
     "title": "Learning Python",
     "output": "docs/blog4.html",
     }
-    ]
+]
 
 
 def get_file_contents(template):
