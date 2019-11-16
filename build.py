@@ -70,7 +70,7 @@ def gen_blog(blog_list):
 def main():
     gen_html(html_pages)
     gen_blog(blog_pages)
-print(Your files have been generated")
+print("Your files have been generated")
 
 
 if __name__ == "__main__":
