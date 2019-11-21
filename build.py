@@ -51,9 +51,8 @@ def read_template():
         index_html = open(pages).read() 
         template_html = open("templates/base.html").read() 
         template = Template(template_html)
-        template.render(title="Testpage",content=index_html)
-        # Need to write output file 
-        open(file["output"], 'w+').write(html_result)
+        template = template.replace("{{title}}", p["title"])
+        open(p["output"], "w+").write(template)
 
 
 
