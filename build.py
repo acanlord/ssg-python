@@ -44,7 +44,7 @@ def gen_blog():
         template = template.replace("{{blog}}", partial)
         open(p["output"], "w+").write(template)
 
-#Jinja stuff, Work in progress
+#Jinja stuff, Work in progress, getting an error....
 def fix_template():
 
     for p in pages:
@@ -59,8 +59,8 @@ def fix_template():
 def main():
     read_files()
     gen_html()
-    fix_template()
-    #gen_blog()
+    gen_blog()
+    #fix_template()
     print("Your files have been generated")
 
 if __name__ == "__main__":
