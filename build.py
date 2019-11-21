@@ -23,8 +23,6 @@ def read_files():
                 "title": title,
                 "output": "./docs/{}".format(filename)
             })
-    print(pages)
-    print(blog)
 
 
 def gen_html():
@@ -56,7 +54,6 @@ def read_template():
         template.render(title="Testpage",content=index_html)
         # Need to write output file 
         open(file["output"], 'w+').write(html_result)
-        #print(template.render(title="Testpage",content=index_html))
 
 
 
@@ -64,7 +61,6 @@ def main():
     read_files()
     gen_html()
     gen_blog()
-    #read_template()
     print("Your files have been generated")
 
 if __name__ == "__main__":
