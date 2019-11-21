@@ -23,8 +23,8 @@ def read_files():
                 "title": title,
                 "output": "./docs/{}".format(filename)
             })
-    print(pages)
-    print(blog)
+    #print(pages)
+    #print(blog)
 
 
 def gen_html():
@@ -32,8 +32,8 @@ def gen_html():
     for p in pages:
         template = open("./templates/base.html").read()
         partial = open(p["filename"]).read()
-        template = template.replace("{{title}}", p["title"])
-        template = template.replace("{{content}}", partial)
+        #template = template.replace("{{title}}", p["title"])
+        #template = template.replace("{{content}}", partial)
         open(p["output"], "w+").write(template)
 
 
@@ -46,25 +46,30 @@ def gen_blog():
         template = template.replace("{{blog}}", partial)
         open(p["output"], "w+").write(template)
 
-#Jinja stuff
-def read_template():
 
-    for file in pages:
-        index_html = open(pages).read() 
-        template_html = open("templates/base.html").read() 
-        template = Template(template_html)
-        template.render(title="Testpage",content=index_html)
-        # Need to write output file 
-        open(file["output"], 'w+').write(html_result)
-        #print(template.render(title="Testpage",content=index_html))
+#Jinja stuff
+def fix_html_templates():
+
+    # for p in pages:
+    #     index_html = open(p("filename").read()
+    #     template_html = open("./templates/base.html").read()
+    #     template = Template(template_html)
+    #     template.render(title="{{title}}",content= p["title"])
+    #     open(p["output"], "w+").write(template)
+
+    index_html = open("/docs/index.html").read()
+    template_html = open("./templates/base.html").read()
+    template = Template(template_html)
+    template.render(title="{{title}}",content= p["title"])
+
 
 
 
 def main():
     read_files()
     gen_html()
-    gen_blog()
-    #read_template()
+    fix_html_templates()
+    #gen_blog()
     print("Your files have been generated")
 
 if __name__ == "__main__":
