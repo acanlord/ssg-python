@@ -30,8 +30,8 @@ def gen_html():
     for p in pages:
         template = open("./templates/base.html").read()
         partial = open(p["filename"]).read()
-        #template = template.replace("{{title}}", p["title"])
-        #template = template.replace("{{content}}", partial)
+        template = template.replace("{{title}}", p["title"])
+        template = template.replace("{{content}}", partial)
         open(p["output"], "w+").write(template)
 
 
@@ -47,12 +47,11 @@ def gen_blog():
 #Jinja stuff, Work in progress
 def read_template():
 
-    for p in pages:
-        index_html = open(p["pages"]).read() 
-        template_html = open("templates/base.html").read() 
-        template = Template(template_html)
-        template = template.replace("{{title}}", p["title"])
-        open(p["output"], "w+").write(template)
+    index_html = open("index.html").read()
+    template_html = open("base.html").read()
+    template = Template(template_html)
+    template.render(title="Homepage",content=index.html)
+
 
 
 

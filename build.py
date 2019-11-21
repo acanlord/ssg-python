@@ -30,8 +30,8 @@ def gen_html():
     for p in pages:
         template = open("./templates/base.html").read()
         partial = open(p["filename"]).read()
-        template = template.replace("{{title}}", p["title"])
-        template = template.replace("{{content}}", partial)
+        #template = template.replace("{{title}}", p["title"])
+        #template = template.replace("{{content}}", partial)
         open(p["output"], "w+").write(template)
 
 
@@ -45,22 +45,22 @@ def gen_blog():
         open(p["output"], "w+").write(template)
 
 #Jinja stuff, Work in progress
-def read_template():
+def fix_template():
 
     for p in pages:
-        html_file = open(p["filename"]).read() 
-        template_html = open("./templates/base.html").read() 
-        template = Template(template_html)
+        index_html = open(p["filename"]).read() 
+        #template_html = open("templates/base.html").read() 
+        template = Template(index_html)
         template = template.render("{{title}}", p["title"])
-        open(p["output"], "w+").write(html_file)
+        open(p["output"], "w+").write(template)
 
 
 
 def main():
     read_files()
-    read_template()
-    #gen_html()
-    gen_blog()
+    gen_html()
+    fix_template()
+    #gen_blog()
     print("Your files have been generated")
 
 if __name__ == "__main__":
