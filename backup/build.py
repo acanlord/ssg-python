@@ -1,77 +1,67 @@
-html_pages = [ 
-    { 
-        "filename": "./content/index.html",
-        "output": "docs/index.html",
-        "title": "About Me",
-    },
-    {
-        "filename": "./content/projects.html",
-        "output": "docs/projects.html",
-        "title": "Projects",
-    },
-    {
+import os
+from jinja2 import Template
 
-        "filename": "./content/blog.html",
-        "output": "docs/blog.html",
-        "title": "blog",
-    }
-    ]
+pages = []
+blog = []
 
-
-blog_pages =  [
-    {
-    "filename":"blog/blog1.html",
-    "date": "October 25th, 2019",
-    "title": "Kickstart Coding",
-    "output": "docs/blog1.html",
-    },
-    {
-    "filename":"blog/blog2.html",
-    "date": "October 30th, 2019",
-    "title": "Learning HTML",
-    "output": "docs/blog2.html",
-    },
-    {
-    "filename":"blog/blog3.html",
-    "date": "November 8th, 2019",
-    "title": "Learning CSS",
-    "output": "docs/blog3.html",
-    },
-    {
-    "filename":"blog/blog4.html",
-    "date": "November 11th, 2019",
-    "title": "Learning Python",
-    "output": "docs/blog4.html",
-    }
-    ]
+def read_files():
+    for _, _, files in os.walk("./content"):
+        for filename in files:
+            title = filename.replace(".html", "")
+            title = title.capitalize()
+            pages.append({
+                "filename": "./content/" + filename,
+                "title": title,
+                "output": "./docs/{}".format(filename)
+            })
+    for _, _, files in os.walk("./blog"):
+        for filename in files:
+            title = filename.replace(".html", "")
+            title = title.capitalize()
+            blog.append({
+                "filename": "./blog/" + filename,
+                "title": title,
+                "output": "./docs/{}".format(filename)
+            })
 
 
-def get_file_contents(template):
-    """get_file_contents takes in path to file & returns contents of file as stirng """
-    with open(template) as template_contents:
-        return template_contents.read()
+def gen_html():
 
-def gen_html(html_list):
-    for p in html_list:
-        with open(p["output"], 'w') as outfile:
-                base_html = get_file_contents("templates/base.html")
-                base_html = base_html.replace("{{title}}", p["title"])
-                base_html = base_html.replace("{{content}}", get_file_contents(p["filename"]))
-                outfile.write(base_html)
+    for p in pages:
+        template = open("./templates/base.html").read()
+        partial = open(p["filename"]).read()
+        template = template.replace("{{title}}", p["title"])
+        template = template.replace("{{content}}", partial)
+        open(p["output"], "w+").write(template)
 
-def gen_blog(blog_list):
-    for b in blog_list:
-        with open(b["output"], 'w') as outfile:
-                base_blog = get_file_contents("templates/blog.html")
-                base_blog = base_blog.replace("{{template}}", b["title"])
-                base_blog = base_blog.replace("{{blog}}", get_file_contents(b["filename"])) 
-                outfile.write(base_blog)
+
+def gen_blog():
+
+    for p in blog:
+        template = open("./templates/blog.html").read()
+        partial = open(p["filename"]).read()
+        template = template.replace("{{title}}", p["title"])
+        template = template.replace("{{blog}}", partial)
+        open(p["output"], "w+").write(template)
+
+#Jinja stuff, Work in progress
+def read_template():
+
+    for p in pages:
+        index_html = open(pages).read() 
+        template_html = open("./templates/base.html").read() 
+        template = Template(template_html)
+        template = template.render("{{title}}", p["title"])
+        open(p["output"], "w+").write(template_html)
+
+
 
 def main():
-    gen_html(html_pages)
-    gen_blog(blog_pages)
-print("Your files have been generated")
-
+    read_files()
+    #read_template()
+    gen_html()
+    gen_blog()
+    print("Your files have been generated")
 
 if __name__ == "__main__":
     main()

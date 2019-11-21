@@ -48,11 +48,11 @@ def gen_blog():
 def read_template():
 
     for p in pages:
-        index_html = open(pages).read() 
+        html_file = open(p["filename"]).read() 
         template_html = open("./templates/base.html").read() 
         template = Template(template_html)
         template = template.render("{{title}}", p["title"])
-        open(p["output"], "w+").write(template_html)
+        open(p["output"], "w+").write(html_file)
 
 
 
