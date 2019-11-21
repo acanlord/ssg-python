@@ -44,7 +44,7 @@ def gen_blog():
         template = template.replace("{{blog}}", partial)
         open(p["output"], "w+").write(template)
 
-#Jinja stuff, Work in progress
+#Jinja stuff, Work in progress, getting an error....
 def fix_template():
 
     for p in pages:
