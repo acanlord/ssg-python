@@ -44,10 +44,10 @@ def gen_blog():
         template = template.replace("{{blog}}", partial)
         open(p["output"], "w+").write(template)
 
-#Jinja stuff
+#Jinja stuff, Work in progress
 def read_template():
 
-    for file in pages:
+    for p in pages:
         index_html = open(pages).read() 
         template_html = open("templates/base.html").read() 
         template = Template(template_html)
@@ -58,6 +58,7 @@ def read_template():
 
 def main():
     read_files()
+    #read_template()
     gen_html()
     gen_blog()
     print("Your files have been generated")
