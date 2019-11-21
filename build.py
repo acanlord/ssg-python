@@ -44,15 +44,15 @@ def gen_blog():
         template = template.replace("{{blog}}", partial)
         open(p["output"], "w+").write(template)
 
-#Jinja stuff, work in progess
+#Jinja stuff, Work in progress
 def read_template():
 
     for p in pages:
-        index_html = open(pages).read() 
-        template_html = open("templates/base.html").read() 
+        html_file = open(p["filename"]).read() 
+        template_html = open("./templates/base.html").read() 
         template = Template(template_html)
-        template = template.replace("{{title}}", p["title"])
-        open(p["output"], "w+").write(template)
+        template = template.render("{{title}}", p["title"])
+        open(p["output"], "w+").write(html_file)
 
 
 
