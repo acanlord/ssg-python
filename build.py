@@ -58,8 +58,8 @@ def read_template():
 
 def main():
     read_files()
-    read_template()
-    #gen_html()
+    #read_template()
+    gen_html()
     gen_blog()
     print("Your files have been generated")
 
