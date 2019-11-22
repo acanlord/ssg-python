@@ -51,7 +51,7 @@ def fix_template():
         open(p["output"], "w+").write(template)
 
     for b in blog:
-        partial = open(p["filename"]).read() 
+        partial = open(b["filename"]).read() 
         template_html = open("templates/base.html").read()
         template = Template(template_html)
         template = template.render({'title': b['title'], 'blog': partial})
