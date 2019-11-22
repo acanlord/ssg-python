@@ -40,6 +40,7 @@ def gen_blog():
         partial = open(b["filename"]).read()
         open(b["output"], "w+").write(template)
 
+
 def fix_template():
 
     for p in pages:
@@ -53,7 +54,7 @@ def fix_template():
         partial = open(p["filename"]).read() 
         template_html = open("templates/base.html").read()
         template = Template(template_html)
-        template = template.render({'title': p['title'], 'blog': partial})
+        template = template.render({'title': b['title'], 'blog': partial})
         open(b["output"], "w+").write(template)
 
 

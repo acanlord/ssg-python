@@ -37,7 +37,7 @@ def gen_html():
 
 def gen_blog():
 
-    for b in blog:
+    for p in blog:
         template = open("./templates/blog.html").read()
         partial = open(p["filename"]).read()
         #template = template.replace("{{title}}", p["title"])
