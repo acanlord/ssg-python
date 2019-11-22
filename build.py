@@ -30,6 +30,8 @@ def gen_html():
     for p in pages:
         template = open("./templates/base.html").read()
         partial = open(p["filename"]).read()
+        #template = template.replace("{{title}}", p["title"])
+        #template = template.replace("{{content}}", partial)
         open(p["output"], "w+").write(template)
 
 
@@ -38,6 +40,8 @@ def gen_blog():
     for p in blog:
         template = open("./templates/blog.html").read()
         partial = open(p["filename"]).read()
+        #template = template.replace("{{title}}", p["title"])
+        #template = template.replace("{{blog}}", partial)
         open(p["output"], "w+").write(template)
 
 def fix_templates():
@@ -47,6 +51,7 @@ def fix_templates():
         template_html = open("templates/base.html").read()
         template = Template(template_html)
         template = template.render({'title': p['title']})
+        template = template.render({'content': partial})
         open(p["output"], "w+").write(template)
 
     for b in blog:
@@ -54,6 +59,7 @@ def fix_templates():
         blog_template = open("templates/blog.html").read()
         template = Template(blog_template)
         template = template.render({'title': b['title']})
+        #template = template.render({'blog': b['partial']})
         open(b["output"], "w+").write(template)
 
 
