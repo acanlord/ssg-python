@@ -51,16 +51,13 @@ def fix_templates():
         template_html = open("templates/base.html").read()
         template = Template(template_html)
         template = template.render({'title': p['title'], 'content': partial})
-        #template = template.render({'content': partial})
         open(p["output"], "w+").write(template)
 
     for b in blog:
         partial = open(b["filename"]).read() 
         blog_template = open("templates/blog.html").read()
         template = Template(blog_template)
-        #template = template.render({'title': b['title']})
         template = template.render({'title': b['title'], 'blog': partial})
-        #template = template.render({'blog': b['partial']})
         open(b["output"], "w+").write(template)
 
 
