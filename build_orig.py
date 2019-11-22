@@ -30,7 +30,7 @@ def gen_html():
     for p in pages:
         template = open("./templates/base.html").read()
         partial = open(p["filename"]).read()
-        template = template.replace("{{title}}", p["title"])
+        #template = template.replace("{{title}}", p["title"])
         #template = template.replace("{{content}}", partial)
         open(p["output"], "w+").write(template)
 
@@ -40,7 +40,7 @@ def gen_blog():
     for p in blog:
         template = open("./templates/blog.html").read()
         partial = open(p["filename"]).read()
-        template = template.replace("{{title}}", p["title"])
+        #template = template.replace("{{title}}", p["title"])
         #template = template.replace("{{blog}}", partial)
         open(p["output"], "w+").write(template)
 
@@ -63,7 +63,7 @@ def main():
     read_files()
     gen_html()
     gen_blog()
-    #fix_template()
+    fix_template()
     print("Your files have been generated")
 
 if __name__ == "__main__":

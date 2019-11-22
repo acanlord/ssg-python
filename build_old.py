@@ -51,9 +51,9 @@ def fix_template():
         partial = open(p["filename"]).read() 
         template_html = open("templates/base.html").read()
         template = Template(template_html)
-        #template = template.render({'title': 'test'})
         template = template.render({'title': p['title']})
-        #template = template.render({'content':p["partial"]})
+        #template = template.render({'title': p['title'], 'content': partial})
+        template = template.render({'content':p["partial"]})
         #template = template.render({'blog':p["partial"]})
         open(p["output"], "w+").write(template)
 
