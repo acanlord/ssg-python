@@ -35,10 +35,10 @@ def gen_html():
 
 def gen_blog():
 
-    for p in blog:
+    for b in blog:
         template = open("./templates/blog.html").read()
-        partial = open(p["filename"]).read()
-        open(p["output"], "w+").write(template)
+        partial = open(b["filename"]).read()
+        open(b["output"], "w+").write(template)
 
 def fix_template():
 
