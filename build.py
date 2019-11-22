@@ -41,7 +41,7 @@ def gen_blog():
         open(b["output"], "w+").write(template)
 
 
-def fix_template():
+def fix_templates():
 
     for p in pages:
         partial = open(p["filename"]).read() 
@@ -63,7 +63,7 @@ def main():
     read_files()
     gen_html()
     gen_blog()
-    fix_template()
+    fix_templates()
     print("Your files have been generated")
 
 if __name__ == "__main__":
